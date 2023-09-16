@@ -1,26 +1,22 @@
 <template>
-  <TheHeader/>
+    <div class="container">
+        <TheHeader/>
+        <TheMain/>
+    </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import TheHeader from './components/TheHeader.vue';
+import TheHeader from './components/layouts/TheHeader.vue';
+import TheMain from './components/layouts/TheMain.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-      TheHeader
+      TheHeader, TheMain
   }
 });
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

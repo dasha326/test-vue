@@ -1,0 +1,66 @@
+//Font weight
+$weight-black: 900;
+$weight-extrabold: 800;
+$weight-bold: 700;
+$weight-semibold: 600;
+$weight-medium: 500;
+$weight-normal: 400;
+$weight-light: 300;
+$weight-extralight: 200;
+$weight-thin: 100;
+
+// Typography
+$font-family-base: 'Montserrat', Arial, sans-serif;
+$font-weight-base: $weight-normal;
+$base-line-height: 1.5;
+
+$headings-font-family: 'Montserrat', Arial, sans-serif;
+$headings-font-weight: $weight-semibold;
+$headings-line-height: 1.4;
+$h1-font-size: 60px;
+$h2-font-size: 36px;
+$h3-font-size: 24px;
+$h4-font-size: 20px;
+$h5-font-size: 18px;
+$h6-font-size: 16px;
+
+
+//Colors
+$primary-color: #0d6efc;
+$secondary-color: #6c757d;
+$success-color: #198654;
+$danger-color: #db3545;
+$warning-color: #fdc007;
+$info-color: #0dc9ef;
+$grey-color: #6C757D;
+
+$primary-bg: #FBFBFB;
+$secondary-bg: #FDFDFD;
+
+$primary-border-color: #E9ECEF;
+
+$primary-box-shadow: 0 0 10px 0 #0000001A;
+
+//Border
+$border-radius: 10px;
+$border-radius-sm: 8px;
+$primary-border: 1px solid $primary-border-color;
+
+
+//Media
+$media-xxl: 1366px;
+$media-xxl-max: $media-xxl - .02;
+$media-xl: 1200px;
+$media-xl-max: $media-xl - .02;
+$media-mxl: 1080px;
+$media-mxl-max: $media-mxl - .02;
+$media-lg: 992px;
+$media-lg-max: $media-lg - .02;
+$media-md: 768px;
+$media-md-max: $media-md - .02;
+$media-mlg: 840px;
+$media-mlg-max: $media-mlg - .02;
+$media-sm: 576px;
+$media-sm-max: $media-sm - .02;
+$media-xs: 414px;
+$media-xs-max: $media-xs - .02;

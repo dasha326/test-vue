@@ -1,0 +1,109 @@
+@import "variables";
+@mixin font-face ($ff, $path, $fs, $fw, $formats: woff2 woff) {
+  $src: null;
+  @each $format in $formats {
+    $src: append($src, url('../fonts/' + quote($path) + "." + $format) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: $ff;
+    src: $src;
+    font-style: $fs;
+    font-weight: $fw;
+    font-display: swap;
+  }
+}
+@include font-face('Montserrat', 'montserrat-regular', normal, 400);
+@include font-face('Montserrat ', 'montserrat-semi-bold', normal, 600);
+
+*,
+*:before,
+*:after{
+  box-sizing: border-box;
+}
+
+html,
+body{
+  margin: 0;
+}
+body{
+  font-family: $font-family-base;
+  font-weight: $font-weight-base;
+  background-color: $primary-bg;
+  padding-bottom: 58px;
+}
+
+
+.container{
+  max-width: 1266px;
+  padding: 0 20px;
+}
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+}
+button{
+  color: currentColor;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+// Typography
+%heading {
+  margin-top: 0; // 1
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  //color: var(--#{$prefix}heading-color, inherit);
+}
+
+h1, .h1 {
+  @extend %heading;
+  font-size: $h2-font-size;
+  @media (min-width: $media-md) {
+    font-size: $h1-font-size;
+  }
+}
+
+h2, .h2 {
+  @extend %heading;
+  font-size: $h3-font-size;
+  @media (min-width: $media-md) {
+    font-size: $h2-font-size;
+  }
+}
+
+h3, .h3 {
+  @extend %heading;
+  font-size: $h3-font-size;
+}
+
+h4, .h4 {
+  @extend %heading;
+  font-size: $h4-font-size;
+}
+
+h5, .h5 {
+  @extend %heading;
+  font-size: $h5-font-size;
+}
+
+h6, .h6 {
+  @extend %heading;
+  font-size: $h6-font-size;
+}
+.m-0{
+  margin: 0;
+}
