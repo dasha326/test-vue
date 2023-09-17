@@ -31,6 +31,8 @@ body{
   font-weight: $font-weight-base;
   background-color: $primary-bg;
   padding-bottom: 58px;
+  font-size: 14px;
+  line-height: 17.07px;
 }
 
 
@@ -49,6 +51,9 @@ body{
   white-space: nowrap;
   clip: rect(0, 0, 0, 0);
 }
+a {
+  text-decoration: none;
+}
 button{
   color: currentColor;
   -ms-user-select: none;
@@ -58,6 +63,13 @@ button{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  &:not(:disabled){
+    cursor: pointer;
+  }
+  &:disabled{
+    opacity: .5;
+    pointer-events: none;
+  }
 }
 
 // Typography

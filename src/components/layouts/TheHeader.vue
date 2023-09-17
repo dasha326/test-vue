@@ -1,9 +1,7 @@
 <template>
     <header class="header">
-        <img class="header__img" src="@/assets/logo.svg" alt="" width="118" height="39">
-        <div class="header__login">
-            <a href="/public">Username</a>
-        </div>
+        <img class="header__img" src="@/assets/images/logo.svg" alt="" width="118" height="39">
+        <a class="header__login" href="/public">Username</a>
     </header>
 </template>
 
@@ -17,10 +15,19 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .header{
-    padding-top: 41px;
-    padding-bottom: 35px;
+    padding-top: 20px;
+    padding-bottom: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (min-width: $media-md){
+        padding-top: 41px;
+        padding-bottom: 35px;
+    }
+    &__login{
+        display: block;
+        color: currentColor;
+        font-size: 16px;
+    }
 }
 </style>
