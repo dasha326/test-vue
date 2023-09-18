@@ -8,13 +8,13 @@
             </div>
         </div>
         <div class="main__content">
-            <CardDoc v-if="store.activeDoc" :doc="store.activeDoc"/>
+            <CardDoc v-if="store.hasOpenDoc" :doc="store.currentDoc"/>
         </div>
     </main>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {defineComponent} from "vue";
 import SearchInput from "@/components/SearchInput.vue";
 import SearchList from "@/components/SearchList.vue";
 import CardDoc from "@/components/cards/CardDoc.vue";

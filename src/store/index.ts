@@ -1,8 +1,10 @@
-import { defineStore } from 'pinia'
+import {defineStore} from 'pinia'
 import {DocsListType, DocType} from "@/tools/types";
 import {mande} from "mande";
+import {routes} from "@/tools/routes";
 
-const api = mande(`${process.env.VUE_APP_URL}/user/docs`)
+const API = process.env.VUE_APP_URL;
+const mandeApi = mande(`${API}`);
 
 export const useDocsStore = defineStore('docs', {
   state: () => ({
@@ -12,14 +14,18 @@ export const useDocsStore = defineStore('docs', {
     errorText: 'Возможно произошла ошибка или ваш поисковый запрос не корректен. Попробуйте еще раз' as string,
     loadingText: 'Загрузка...' as string,
     emptyText: 'Ничего не найдено' as string,
-    activeDoc: null as DocType
+    currentDoc: null as DocType,
   }),
   getters: {
+    hasOpenDoc: (state) => state.currentDoc !== null,
+    hasList: (state) => state.list !== null,
   },
   actions: {
-    async getList(value:string) {
+    async search(value:string) {
       try {
-        const list:DocsListType = await api.get(`?search=${value}`);
+        const list:DocsListType = value.length > 0
+            ? await mandeApi.get(`${routes.get_user_docs}?search=${value}`)
+            : await mandeApi.get(`${routes.get_user_docs}`);
         if(list?.length){
           this.list = list;
         } else {
@@ -28,7 +34,7 @@ export const useDocsStore = defineStore('docs', {
         }
         this.isDocsLoading = false;
       } catch (error){
-        console.error(error)
+        return null
       }
     }
   },

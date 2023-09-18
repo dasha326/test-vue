@@ -1,5 +1,6 @@
 @import "variables";
-@mixin font-face ($ff, $path, $fs, $fw, $formats: woff2 woff) {
+
+@mixin font-face($ff, $path, $fs, $fw, $formats: woff2 woff) {
   $src: null;
   @each $format in $formats {
     $src: append($src, url('../fonts/' + quote($path) + "." + $format) format(quote($format)), comma);
@@ -13,20 +14,22 @@
     font-display: swap;
   }
 }
+
 @include font-face('Montserrat', 'montserrat-regular', normal, 400);
 @include font-face('Montserrat ', 'montserrat-semi-bold', normal, 600);
 
 *,
 *:before,
-*:after{
+*:after {
   box-sizing: border-box;
 }
 
 html,
-body{
+body {
   margin: 0;
 }
-body{
+
+body {
   font-family: $font-family-base;
   font-weight: $font-weight-base;
   background-color: $primary-bg;
@@ -35,12 +38,12 @@ body{
   line-height: 17.07px;
 }
 
-
-.container{
+.container {
   max-width: 1266px;
   padding: 0 20px;
 }
-.sr-only{
+
+.sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -51,10 +54,12 @@ body{
   white-space: nowrap;
   clip: rect(0, 0, 0, 0);
 }
+
 a {
   text-decoration: none;
 }
-button{
+
+button {
   color: currentColor;
   -ms-user-select: none;
   -moz-user-select: none;
@@ -63,10 +68,12 @@ button{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  &:not(:disabled){
+
+  &:not(:disabled) {
     cursor: pointer;
   }
-  &:disabled{
+
+  &:disabled {
     opacity: .5;
     pointer-events: none;
   }
@@ -116,6 +123,7 @@ h6, .h6 {
   @extend %heading;
   font-size: $h6-font-size;
 }
-.m-0{
+
+.m-0 {
   margin: 0;
 }

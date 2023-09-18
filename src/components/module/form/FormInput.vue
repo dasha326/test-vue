@@ -1,6 +1,6 @@
 <template>
     <label class="form-group">
-        <span class="form-label h6" :class="{'visually-hidden': labelHidden }" >{{label}}</span>
+        <span class="form-label h6" :class="{'visually-hidden': labelHidden }">{{label}}</span>
         <input
             ref="currentInput"
             class="form-input"

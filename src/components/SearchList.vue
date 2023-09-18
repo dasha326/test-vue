@@ -2,19 +2,19 @@
     <section class="search-list">
         <CardSearch v-for="(item,i) in list" :key="item.id"
                     :doc="item"
-                    :is-active="activeDoc === i"
-                    @onClick="checkDock(i, item)"/>
+                    :is-active="currentDoc === i"
+                    @click="checkDock(i, item)"/>
 
         <div class="search-list__alerts">
-            <text-alert v-if="isLoading" :text="store.loadingText" alertType="info"/>
-            <text-alert v-if="isError" :text="store.errorText" alertType="danger"/>
+            <text-alert v-if="isLoading" :text="store.loadingText" type="info"/>
+            <text-alert v-if="isError" :text="store.errorText" type="danger"/>
             <p v-if="isNotFound" class="search-list__text">{{store.emptyText}}</p>
         </div>
     </section>
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, ref, watch} from 'vue';
+import {computed, defineComponent, ref, watch} from "vue";
 import CardSearch from "@/components/cards/CardSearch.vue";
 import TextAlert from "@/components/module/TextAlert.vue";
 import {useDocsStore} from "@/store";
@@ -28,21 +28,22 @@ export default defineComponent({
     },
     setup(props){
         const store = useDocsStore();
-        const isNotFound = computed(()=> !store.list && !store.isError && !store.isDocsLoading);
-        const isLoading = computed(()=> !store.list && store.isDocsLoading);
-        const isError = computed(()=> !store.list && store.isError);
-        const activeDoc = ref<number|null>(null);
+        const isNotFound = computed(()=> !store.hasList && !store.isError && !store.isDocsLoading);
+        const isLoading = computed(()=> !store.hasList && store.isDocsLoading);
+        const isError = computed(()=> !store.hasList && store.isError);
+        const currentDoc = ref<number|null>(null);
 
         watch(()=> props.list, () => {
-            activeDoc.value = null;
+            currentDoc.value = null;
         })
         function checkDock(i:number, item:DocType) {
-            const isCurrent = i === activeDoc.value
-            activeDoc.value = isCurrent ? null : i;
-            store.activeDoc = isCurrent ? null : item;
+            const isCurrent = i === currentDoc.value
+            currentDoc.value = isCurrent ? null : i;
+            store.currentDoc = isCurrent ? null : item;
         }
+
         return {
-            store, activeDoc,isNotFound,isLoading, isError, checkDock
+            store, currentDoc,isNotFound,isLoading, isError, checkDock
         };
     }
 });

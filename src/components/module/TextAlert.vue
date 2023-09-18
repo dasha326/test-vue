@@ -1,16 +1,16 @@
 <template>
-    <div class="alert" :class="`alert--${alertType}`">
+    <div class="alert" :class="`alert--${type}`">
         {{text}}
     </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {defineComponent} from "vue";
 
 export default defineComponent({
-    name: 'AlertDialog',
+    name: 'TextAlert',
     props: {
-        alertType: String,
+        type: String,
         text: String
     }
 });

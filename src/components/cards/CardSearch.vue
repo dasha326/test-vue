@@ -1,5 +1,5 @@
 <template>
-    <button class="card-search" :class="{'card-search--active': isActive}" @click="$emit('onClick')">
+    <button class="card-search" :class="{'card-search--active': isActive}">
         <span class="card-search__picture">
             <img class="card-search__img" src="@/assets/images/no-image.svg" alt="" width="31" >
         </span>
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType, ref} from 'vue';
+import {defineComponent, PropType} from "vue";
 import {DocType} from "@/tools/types";
 
 export default defineComponent({
@@ -22,8 +22,7 @@ export default defineComponent({
             required: true
         },
         isActive: Boolean
-    },
-    emits: ['onClick'],
+    }
 });
 </script>
 

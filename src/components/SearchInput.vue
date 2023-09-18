@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, watch} from 'vue';
+import {defineComponent, ref, watch} from "vue";
 import FormInput from "@/components/module/form/FormInput.vue";
 import {useDocsStore} from "@/store";
 
@@ -21,9 +21,9 @@ export default defineComponent({
             store.list = null;
             store.isError = false;
             store.isDocsLoading = true;
-            store.activeDoc = null;
+            store.currentDoc = null;
             clearTimeout(timeout);
-            timeout = setTimeout(() => store.getList(newValue), 1000);
+            timeout = setTimeout(() => store.search(newValue), 1000);
         })
 
         return{

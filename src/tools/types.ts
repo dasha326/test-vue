@@ -6,22 +6,6 @@ export interface IDoc {
     description: string,
     image?: string
 }
-export type DocsListType = null | Array<IDoc>
-export type DocType = null | IDoc
+export type DocsListType = null | Array<IDoc>;
 
-/*Alert Types*/
-export type RequiredType = 'success' | 'isOrder' | 'error';
-export interface IRequiredAlertSuccess {
-    alertType: 'success',
-    title: string,
-    text: string
-}
-export interface IRequiredAlertError {
-    alertType: 'error',
-    title: string,
-    text: string
-}
-export type requiredAlertType = IRequiredAlertSuccess|IRequiredAlertError|null
-
-
-export type CheckGamesType = Record<number, string>
+export type DocType = null | IDoc;
