@@ -1,6 +1,9 @@
 <template>
     <div class="alert" :class="`alert--${type}`">
-        {{text}}
+        <div class="alert__picture" v-if="$slots.icon">
+            <slot name="icon"></slot>
+        </div>
+        <p class="alert__text">{{text}}</p>
     </div>
 </template>
 
@@ -18,6 +21,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
     .alert{
+        display: flex;
+        align-items: center;
         padding: 15px 10px;
         border-radius: $border-radius;
         background-color: #fff;
@@ -30,6 +35,16 @@ export default defineComponent({
         &--danger{
             color: $danger-color;
             border-color: $danger-color;
+        }
+        &__picture{
+            margin-right: 10px;
+            width: 40px;
+        }
+        &__text{
+            margin: 0;
+            &:not(:first-child){
+                width: calc(100% - 40px);
+            }
         }
     }
 </style>

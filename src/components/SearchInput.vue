@@ -1,6 +1,6 @@
 <template>
     <section class="search-input">
-        <form-input label="Поиск документа" placeholder="Введите ID документа" @input="onSearch($event.target.value)"/>
+        <form-input label="Поиск документа" placeholder="Введите ID документа" @input="search($event.target.value)"/>
     </section>
 </template>
 
@@ -8,7 +8,6 @@
 import {defineComponent} from "vue";
 import FormInput from "@/components/module/form/FormInput.vue";
 import {useDocsStore} from "@/store";
-import {debounce} from "@/tools/utils";
 
 export default defineComponent({
     name: 'SearchInput',
@@ -16,17 +15,17 @@ export default defineComponent({
     setup(){
         const store = useDocsStore();
 
+        let timeout:ReturnType<typeof setTimeout>;
         function search(value:string) {
             store.list = null;
             store.isError = false;
             store.isDocsLoading = true;
             store.currentDoc = null;
-            store.search(value)
+            clearTimeout(timeout);
+            timeout = setTimeout(() => store.search(value), 1000);
         }
-        const onSearch = debounce(search, 500);
-
-        return {
-            onSearch
+        return{
+            search
         }
     }
 });

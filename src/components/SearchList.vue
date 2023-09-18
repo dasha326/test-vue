@@ -6,9 +6,13 @@
                     @click="checkDoc(item)"/>
 
         <div class="search-list__alerts">
-            <text-alert v-if="isLoading" :text="store.loadingText" type="info"/>
+            <text-alert v-if="isLoading" :text="store.loadingText" type="info">
+                <template #icon>
+                    <img src="@/assets/images/preloader.svg" alt="Иконка загрузки" width="30">
+                </template>
+            </text-alert>
             <text-alert v-if="isError" :text="store.errorText" type="danger"/>
-            <p v-if="isNotFound" class="search-list__text">{{store.emptyText}}</p>
+            <p v-if="isNotFound" class="search-list__text m-0">{{store.emptyText}}</p>
         </div>
     </section>
 </template>
@@ -36,7 +40,7 @@ export default defineComponent({
         watch(()=> props.list, () => {
             currentDoc.value = null;
         })
-        
+
         function checkDoc(item:DocType) {
             if (item !== null){
                 const isCurrent = item.id === currentDoc.value;

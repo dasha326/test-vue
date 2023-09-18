@@ -35,11 +35,14 @@ export default defineComponent({
         background-color: #fff;
         box-shadow: $primary-box-shadow;
         text-align: left;
-        border: 0;
+        border: 1px solid transparent;
         padding: 0;
         width: 100%;
         overflow: hidden;
         cursor: pointer;
+        &:hover{
+            border-color: $primary-color
+        }
         &:not(:first-child){
             margin-top: 15px;
             @media (min-width: $media-md){
