@@ -22,7 +22,7 @@ export default defineComponent({
     props: {
         label: {
             type: String,
-            require: true
+            required: true
         },
         modelValue: {
             type: String,
@@ -30,7 +30,6 @@ export default defineComponent({
         },
         type: {
             type: String,
-            require: true,
             default: 'text'
         },
         inputModClass: String,
@@ -64,7 +63,6 @@ export default defineComponent({
             &::placeholder{
                 color: $grey-color;
             }
-
         }
     }
 </style>

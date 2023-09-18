@@ -9,6 +9,7 @@
         </div>
         <div class="main__content">
             <CardDoc v-if="store.hasOpenDoc" :doc="store.currentDoc"/>
+            <p v-else class="main__content-text" >Выберите документ, чтобы посмотреть его содержиое</p>
         </div>
     </main>
 </template>
@@ -23,7 +24,7 @@ import {useDocsStore} from "@/store";
 export default defineComponent({
     name: 'TheMain',
     components: {SearchList, SearchInput, CardDoc},
-    setup(){
+    setup() {
         const store = useDocsStore();
 
         return {
@@ -54,10 +55,17 @@ export default defineComponent({
             }
         }
         &__content{
+            display: flex;
+            align-items: flex-start;
             background-color: #ffffff;
             @media (min-width: $media-md){
                 padding: 30px;
                 border-left: $primary-border;
+            }
+            &-text{
+                align-self: center;
+                text-align: center;
+                width: 100%;
             }
         }
         &__list{

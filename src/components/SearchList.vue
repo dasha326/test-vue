@@ -1,9 +1,9 @@
 <template>
     <section class="search-list">
-        <CardSearch v-for="(item,i) in list" :key="item.id"
+        <CardSearch v-for="(item) in list" :key="item.id"
                     :doc="item"
-                    :is-active="currentDoc === i"
-                    @click="checkDock(i, item)"/>
+                    :is-active="currentDoc === item.id"
+                    @click="checkDoc(item)"/>
 
         <div class="search-list__alerts">
             <text-alert v-if="isLoading" :text="store.loadingText" type="info"/>
@@ -36,14 +36,22 @@ export default defineComponent({
         watch(()=> props.list, () => {
             currentDoc.value = null;
         })
-        function checkDock(i:number, item:DocType) {
-            const isCurrent = i === currentDoc.value
-            currentDoc.value = isCurrent ? null : i;
-            store.currentDoc = isCurrent ? null : item;
+        
+        function checkDoc(item:DocType) {
+            if (item !== null){
+                const isCurrent = item.id === currentDoc.value;
+                currentDoc.value = isCurrent ? null : item.id;
+                store.currentDoc = isCurrent ? null : item;
+            }
         }
 
         return {
-            store, currentDoc,isNotFound,isLoading, isError, checkDock
+            store,
+            currentDoc,
+            isNotFound,
+            isLoading,
+            isError,
+            checkDoc
         };
     }
 });

@@ -1,5 +1,3 @@
-export type InputValidLabelsType = 'name' | 'tel' | 'email' | null;
-
 export interface IDoc {
     id: number,
     name: string,

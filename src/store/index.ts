@@ -1,10 +1,9 @@
-import {defineStore} from 'pinia'
+import {defineStore} from "pinia";
 import {DocsListType, DocType} from "@/tools/types";
 import {mande} from "mande";
 import {routes} from "@/tools/routes";
 
-const API = process.env.VUE_APP_URL;
-const mandeApi = mande(`${API}`);
+const api = mande(process.env.VUE_APP_URL);
 
 export const useDocsStore = defineStore('docs', {
   state: () => ({
@@ -24,16 +23,16 @@ export const useDocsStore = defineStore('docs', {
     async search(value:string) {
       try {
         const list:DocsListType = value.length > 0
-            ? await mandeApi.get(`${routes.get_user_docs}?search=${value}`)
-            : await mandeApi.get(`${routes.get_user_docs}`);
-        if(list?.length){
+            ? await api.get(`${routes.get_user_docs}?search=${value}`)
+            : await api.get(routes.get_user_docs);
+        if (list?.length) {
           this.list = list;
         } else {
           this.list = null;
-          this.isError = true
+          this.isError = true;
         }
         this.isDocsLoading = false;
-      } catch (error){
+      } catch (error) {
         return null
       }
     }

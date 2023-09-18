@@ -39,7 +39,7 @@ export default defineComponent({
             document.body.removeChild(link);
         }
 
-        return{
+        return {
             downloadFile
         }
     }
@@ -50,6 +50,7 @@ export default defineComponent({
     .card-doc{
         display: flex;
         flex-wrap: wrap;
+        height: auto;
         &__picture{
             display: flex;
             align-items: center;
@@ -122,6 +123,5 @@ export default defineComponent({
         &__text{
             color: $grey-color;
         }
-
     }
 </style>

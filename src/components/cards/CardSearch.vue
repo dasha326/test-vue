@@ -71,7 +71,6 @@ export default defineComponent({
         &__text{
             display: block;
         }
-
         &__text{
             color: $grey-color;
             margin: 6px 0 0;

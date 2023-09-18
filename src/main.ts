@@ -3,6 +3,9 @@ import App from "./App.vue";
 import {createPinia} from "pinia";
 import "./assets/styles/styles.scss";
 
-createApp(App)
-    .use(createPinia())
-    .mount('#app');
+const API = process.env.VUE_APP_URL;
+if (typeof API === 'string' && API.length > 0 ){
+    createApp(App)
+        .use(createPinia())
+        .mount('#app');
+}
